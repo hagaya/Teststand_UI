@@ -8,9 +8,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static FabricTester.TeststandLogic;
+using static Teststand_UI.TeststandLogic;
 
-namespace FabricTester
+namespace Teststand_UI
 {
     public enum StepStatus
     {
@@ -93,6 +93,9 @@ namespace FabricTester
         public delegate void EndExecutionEvent();
         public event EndExecutionEvent AEndExecutionEvent;
 
+        public delegate void StartInteractiveExecutionEvent();
+        public event StartInteractiveExecutionEvent AStartInteractiveExecutionEvent;
+        
         public delegate void LoadSequenceEvent(List<string> StepList);
         public event LoadSequenceEvent ALoadSequenceEvent;
         
@@ -134,6 +137,10 @@ namespace FabricTester
                     // Nothing for now
                     break;
 
+                case UIMessageCodes.UIMsg_StartInteractiveExecution:
+                    // Nothing for now
+                    AStartInteractiveExecutionEvent?.Invoke();
+                    break;
 
                 case UIMessageCodes.UIMsg_EndExecution:
                     AEndExecutionEvent?.Invoke();
@@ -158,8 +165,6 @@ namespace FabricTester
                             default:
                                 ALoginEvent?.Invoke(mCurrUserName);
                                 break;
-
-
                         }
                     }
                     else
@@ -193,8 +198,7 @@ namespace FabricTester
                     GetExecutionState();
                     if (ArunState == ExecutionRunStates.ExecRunState_Stopped)
                         AEndExecutionEvent.Invoke();
-                        break;
-
+                    break;
 
                 case UIMessageCodes.UIMsg_ShutDownComplete:
 

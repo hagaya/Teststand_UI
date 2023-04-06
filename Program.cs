@@ -1,4 +1,4 @@
-namespace FabricTester
+namespace Teststand_UI
 {
     internal static class Program
     {
@@ -11,7 +11,7 @@ namespace FabricTester
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FabricTesterForm());
+            Application.Run(new Teststand_UIForm());
         }
     }
 }

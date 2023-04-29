@@ -62,7 +62,7 @@ namespace Teststand_UI
             TS.ALoadSequenceEvent += SequenceLoaded;
             TS.AEndExecutionEvent += EndExecution;
             TS.AStartInteractiveExecutionEvent += StartInteractiveExecution;
-            
+
             TS.ATraceEvent += TraceSteps2;
 
             TS.AProgressEvent += ProgressTest;
@@ -455,7 +455,7 @@ namespace Teststand_UI
         }
 
 
-        private void SetupStartExecute ()
+        private void SetupStartExecute()
         {
             InitiateListBox(true);
             EnableTracing = true;
